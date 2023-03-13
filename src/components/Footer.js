@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
 function Footer() {
+
   return (
-    <div>Footer</div>
-  )
+    <div className="footer">
+      <button className="footer_btn"  >new game</button>
+    </div>
+  );
 }
 
-export default Footer
+export default Footer;
