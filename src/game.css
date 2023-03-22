@@ -67,6 +67,9 @@ body {
   border: 5px solid chocolate;
 
 }
+.footer button:hover{
+  background-color: chocolate;
+}
 .GameBoard {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
