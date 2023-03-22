@@ -25,14 +25,14 @@ function GameBoard() {
   const [gameState, setGameState] = useState(GAME_STATE_PLAYING);
   const [winPlayer, setWinPlayer] = useState();
 
-  console.log(GameBoard);
+  // console.log(GameBoard);
 
   useEffect(() => {
     initGame();
   }, []);
 
   const initGame = () => {
-    console.log("init game");
+    // console.log("init game");
     setGameBoard(Array(16).fill(NO_PLAYER));
     setCurrentPlayer(PLAYER_1);
   };
