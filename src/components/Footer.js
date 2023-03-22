@@ -1,10 +1,12 @@
 import React from "react";
 
-function Footer() {
+const Footer=({onClickEvent})=> {
 
   return (
-    <div className="footer">
-      <button className="footer_btn"  >new game</button>
+    <div className="panel footer">
+      <button 
+      onClick={onClickEvent}
+       className="footer_btn"  >new game</button>
     </div>
   );
 }

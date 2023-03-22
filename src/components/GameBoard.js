@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GameCircle from "./GameCircle";
 import Header from "./Header";
 import Footer from "./Footer";
-import { isWinner } from "./helper";
+import { isDrew, isWinner } from "./helper";
 import {
+  GAME_STATE_DREW,
   GAME_STATE_PLAYING,
   GAME_STATE_WIN,
   NO_PLAYER,
@@ -18,33 +19,48 @@ import {
 //   sound.play();
 // }
 
-
 function GameBoard() {
   const [GameBoard, setGameBoard] = useState(Array(16).fill(NO_PLAYER));
   const [currentPlayer, setCurrentPlayer] = useState(PLAYER_1);
   const [gameState, setGameState] = useState(GAME_STATE_PLAYING);
   const [winPlayer, setWinPlayer] = useState();
-  
+
   console.log(GameBoard);
+
+  useEffect(() => {
+    initGame();
+  }, []);
+
+  const initGame = () => {
+    console.log("init game");
+    setGameBoard(Array(16).fill(NO_PLAYER));
+    setCurrentPlayer(PLAYER_1);
+  };
+
 
   const circleClicked = (id) => {
     console.log("circle clicked" + id);
+    const board=[...GameBoard]
+    board[id]=currentPlayer
+    setGameBoard(board)
+  
     if (GameBoard[id] !== NO_PLAYER) return;
+    if (gameState !== GAME_STATE_PLAYING) return;
     if (isWinner(GameBoard, id, currentPlayer)) {
       setWinPlayer(currentPlayer);
-      setGameState(GAME_STATE_WIN)
-      console.log("winner");
+      setGameState(GAME_STATE_WIN);
     }
-    GameBoard[id] = currentPlayer;
-    setGameBoard(GameBoard);
+    if (isDrew(GameBoard, id, currentPlayer)) {
+      setWinPlayer(currentPlayer);
+      setGameState(GAME_STATE_DREW);
+    }
+   
     setCurrentPlayer(currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1);
-    // console.log(GameBoard);
   };
 
   const renderCircle = (id) => {
     return (
       <GameCircle
-      
         id={id}
         className={`player_${GameBoard[id]}`}
         onCircleClicked={circleClicked}
@@ -53,7 +69,11 @@ function GameBoard() {
   };
   return (
     <>
-      <Header currentPlayer={currentPlayer} gameState={gameState} winPlayer={winPlayer} />
+      <Header
+        currentPlayer={currentPlayer}
+        gameState={gameState}
+        winPlayer={winPlayer}
+      />
       {/* <button onClick={handleClick}>Play Sound</button> */}
 
       <div className="GameBoard">
@@ -74,7 +94,7 @@ function GameBoard() {
         {renderCircle(14)}
         {renderCircle(15)}
       </div>
-      <Footer />
+      <Footer  />
     </>
   );
 }

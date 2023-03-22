@@ -1,5 +1,5 @@
 import React from "react";
-import { GAME_STATE_PLAYING, GAME_STATE_WIN } from "../Constants";
+import { GAME_STATE_PLAYING, GAME_STATE_WIN,GAME_STATE_DREW } from "../Constants";
 
 function Header({ currentPlayer, winPlayer, gameState }) {
   const renderLabel = () => {
@@ -8,6 +8,8 @@ function Header({ currentPlayer, winPlayer, gameState }) {
         return <div> player {currentPlayer} turn</div>;
       case GAME_STATE_WIN:
         return <div>player {winPlayer} wins</div>;
+      case GAME_STATE_DREW:
+        return <div>game is a drew!</div>;
       default:
     }
   };

@@ -15,7 +15,7 @@ body {
   left: 50%;
   top: 90px;
   height: 60px;
-  width: 200px;
+  width: 220px;
   margin-left: -90px;
   text-align: center;
   margin-top: -90px; 
@@ -32,29 +32,26 @@ body {
   transform: translate(-50%, -50%);
 }
 .footer {
-  left: 50%;
-  top: 80%;
-  height: 80px;
-  width: 300px;
-  margin-left: 600px;
-  z-index: 888;
+  left: 43%;
+    top: 76%;
+    height: 68px;
+    width: 238px;
+    z-index: 888;
   /* border: 5px solid red; */
 
 }
 .footer_btn {
   position: relative;
-  left: -90px;
-    top: 431px;
-  margin-left: 50px;
-  width: 250px;
-  height: 50px;
-  background-color: lightblue;
-  font-size: 30px;
-  font-weight: bold;
-  -webkit-box-shadow: 3px 5px 10px 2px rgba(0, 0, 0, 0.9);
-  box-shadow: 3px 5px 10px 2px rgba(0, 0, 0, 0.9);
-  border: 5px solid chocolate;
-  /* z-index: 1; */
+    left: 8px;
+    top: 8px;
+    /* margin-left: 50px; */
+    width: 220px;
+    height: 50px;
+    background-color: lightblue;
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: 3px 5px 10px 2px rgb(0 0 0 / 90%);
+    border: 5px solid chocolate;
 }
 .GameBoard {
   display: grid;
